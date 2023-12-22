@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4_colores</title>
+</head>
+<body>
+    <div id="container">
+        <div id="cuadro1" style="width: 200px; height: 200px; background-color: blue; margin:10px;"></div>
+        <div id="cuadro2" style="width: 200px; height: 200px; background-color: red; margin:10px;"></div>
+        <div id="cuadro3" style="width: 200px; height: 200px; background-color: green; margin:10px;"></div>
+        <div id="cuadro4" style="width: 200px; height: 200px; background-color: yellow; margin:10px;"></div>
+        <div id="key" style="width: 200px; height: 200px; background-color: white; border-color: black; border-style: solid; margin:10px;"></div>
+    </div>
+
+    <script>
+        /*Elementos del DOM*/
+        const cdr1 = document.getElementById("cuadro1")
+        const cdr2 = document.getElementById("cuadro2")
+        const cdr3 = document.getElementById("cuadro3")
+        const cdr4 = document.getElementById("cuadro4")
+        const cdr_key = document.getElementById("key")
+        colorcdr = ""
+        nroDiv = 5
+
+        /*Eventos y asigna color negro*/
+        cdr1.addEventListener("click", () => {cdr1.style.backgroundColor = "black"})
+        cdr2.addEventListener("click", () => {cdr2.style.backgroundColor = "black"})
+        cdr3.addEventListener("click", () => {cdr3.style.backgroundColor = "black"})
+        cdr4.addEventListener("click", () => {cdr4.style.backgroundColor = "black"})
+
+        /*Funcion para crear DIV con el color*/
+        const creaDiv = (color) => {
+            contenDiv = document.getElementById("container");
+            const elementoDiv = document.createElement("div")
+            elementoDiv.id = "cuadro" + nroDiv++
+            elementoDiv.style = `width: 200px; height: 200px; background-color: ${color}; margin:10px;`
+            contenDiv.appendChild(elementoDiv);
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'a') colorcdr = "pink" 
+            else if (event.key === 's') colorcdr = "orange" 
+            else if (event.key === 'd') colorcdr = "skyblue" 
+            else if (event.key === 'q') creaDiv("purple")
+            else if (event.key === 'w') creaDiv("gray") 
+            else if (event.key === 'e') creaDiv("brown")
+            else colorcdr = "white"
+
+            cdr_key.style.backgroundColor = colorcdr
+        })
+    </script>
+</body>
+</html>
